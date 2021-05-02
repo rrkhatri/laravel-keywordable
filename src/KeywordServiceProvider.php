@@ -13,23 +13,15 @@ class KeywordServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Publishing Model
-        if (file_exists(app_path() . '/Models')) {
-            $this->publishes([
-                __DIR__ . '/../app' => base_path('app/Models'),
-            ]);
-        } else {
-            $this->publishes([
-                __DIR__ . '/../app' => base_path('app'),
-            ]);
-        }
+        $modelPath = (file_exists(app_path() . '/Models'))
+            ? base_path('app/Models') : base_path('app');
 
-        // Publishing Trait
+        // Publishing Model, Traits & Migrations
         $this->publishes([
-            __DIR__ . '/../app/Traits' => base_path('app/Traits'),
+            __DIR__ . '/../app'                 => $modelPath,
+            __DIR__ . '/../app/Traits'          => base_path('app/Traits'),
+            __DIR__.'/../database/migrations'   => base_path('database/migrations')
         ]);
-
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
