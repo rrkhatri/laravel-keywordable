@@ -23,8 +23,8 @@ class KeywordServiceProvider extends ServiceProvider
 //            __DIR__.'/../database/migrations'   => base_path('database/migrations')
 //        ]);
 
-        $this->app->make('RrKhatri/Keywordable/Keyword');
-        $this->app->make('RrKhatri/Keywordable/Traits/Keywordable');
+        $this->app->make('RrKhatri\Keywordable\Keyword');
+        $this->app->make('RrKhatri\Keywordable\Traits\Keywordable');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
