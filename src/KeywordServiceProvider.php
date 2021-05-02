@@ -13,18 +13,14 @@ class KeywordServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        $modelPath = (file_exists(app_path() . '/Models'))
-//            ? base_path('app/Models') : base_path('app');
-//
-//        // Publishing Model, Traits & Migrations
-//        $this->publishes([
-//            __DIR__ . '/../app'                 => $modelPath,
-//            __DIR__ . '/../app/Traits'          => base_path('app/Traits'),
-//            __DIR__.'/../database/migrations'   => base_path('database/migrations')
-//        ]);
+        if (!class_exists('CreateKeywordsTable')) {
+            $timestamp = date('Y_m_d_His', time());
 
-        $this->app->make('RrKhatri\Keywordable\Traits\Keywordable');
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_keywords_table.php' =>
+                    database_path('migrations/'.$timestamp.'_create_keywords_table.php'),
+            ], 'migrations');
+        }
     }
 
     /**
