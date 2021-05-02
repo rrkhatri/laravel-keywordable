@@ -1,6 +1,6 @@
 <?php
 
-namespace RrKhatri\App;
+namespace RrKhatri\Keywordable;
 
 use Illuminate\Database\Eloquent\Model;
 
