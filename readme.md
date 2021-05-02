@@ -1,3 +1,5 @@
-publish model & trait by executing below command.
+Publish model & trait by executing below command.
+>php artisan vendor:publish --provider="RrKhatri\Keywordable\KeywordServiceProvider"
 
-``php artisan vendor:publish --provider="RrKhatri\Keywordable\KeywordServiceProvider"``
+Migrate keywords table
+>php artisan migrate

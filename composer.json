@@ -1,6 +1,6 @@
 {
     "name": "rrkhatri/laravel-keywordable",
-    "description": "Add keywords on model and filter model using keywords.",
+    "description": "Add keywords on model and filter models using keywords.",
     "license": "MIT",
     "authors": [
         {
@@ -10,14 +10,14 @@
     ],
     "homepage": "https://github.com/rrkhatri/laravel-keywordable",
     "keywords": [
-        "laravel", "keyword", "keywords",
-        "laravel keyword", "laravel keywords",
-        "rohankhatri", "rrkhatri", "keywordable", "laravel keywordable"
+        "laravel", "keyword", "keywordable", "rohankhatri", "rrkhatri"
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|^8.0",
+        "ext-json": "*",
+        "illuminate/database": "^8.40",
         "illuminate/support": "~5|~6|~7|~8"
     },
     "autoload": {
