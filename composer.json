@@ -11,8 +11,8 @@
     "homepage": "https://github.com/rohankahtri/laravel-finer",
     "keywords": [
         "laravel", "keyword", "keywords",
-        "laravel keyword", "laravel keywords", "laravel-keywordable",
-        "rohankhatri", "rrkhatri", "rrkhatri/laravel-keywordable"
+        "laravel keyword", "laravel keywords",
+        "rohankhatri", "rrkhatri", "keywordable", "laravel keywordable"
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
