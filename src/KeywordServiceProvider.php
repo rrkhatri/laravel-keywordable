@@ -14,9 +14,9 @@ class KeywordServiceProvider extends ServiceProvider
     public function boot()
     {
         // Publishing Model
-        if (file_exists(app_path() . '/models')) {
+        if (file_exists(app_path() . '/Models')) {
             $this->publishes([
-                __DIR__.'/../src/app' => base_path('app/models'),
+                __DIR__.'/../src/app' => base_path('app/Models'),
             ]);
         } else {
             $this->publishes([
