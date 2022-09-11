@@ -1,7 +1,6 @@
 ## Laravel Keywordable
 This package is used to bind searchable keywords on model. Which you can directly use in your query.
 
-<br/>
 <hr/>
 
 ### Setup:
