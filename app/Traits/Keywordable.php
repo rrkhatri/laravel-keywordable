@@ -56,10 +56,12 @@ trait Keywordable
         }
 
         if (is_array($keywords)) {
+            $keywordsToBeCreated = [];
+
             $this->keywords()->delete();
 
             foreach ($keywords as $index => $keyword) {
-                if (! $keyword || blank($keyword) || ! trim($keyword)) {
+                if (!$keyword || blank($keyword) || !trim($keyword)) {
                     unset($keywords[$index]);
                 }
             }
@@ -67,8 +69,16 @@ trait Keywordable
             $keywords = array_unique($keywords);
 
             foreach ($keywords as $keyword) {
-                $this->keywords()->create(['keyword' => $keyword]);
+                $keywordsToBeCreated[] = [
+                    'subject_type' => self::class,
+                    'subject_id'   => $this->id,
+                    'keyword'      => $keyword,
+                    'created_at'   => now(),
+                    'updated_at'   => now(),
+                ];
             }
+
+            $this->keywords()->insert($keywordsToBeCreated);
         }
     }
 }
