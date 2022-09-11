@@ -55,6 +55,10 @@ trait Keywordable
      */
     public function syncKeywords(...$keywords)
     {
+        if (is_array($keywords) && count($keywords) == 1) {
+            $keywords = $keywords[0];
+        }
+
         if (is_string($keywords) && $keywords = trim($keywords)) {
             $keywords = explode(',', $keywords);
         }
