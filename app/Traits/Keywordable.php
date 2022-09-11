@@ -9,12 +9,14 @@ trait Keywordable
         return $this->morphMany(Keyword::class, 'subject');
     }
 
-    public function deleteKeywords(...$keywords)
+    public function removeKeywords(...$keywords)
     {
         if (count($keywords)) {
             $this->keywords()->whereIn('keyword', $keywords)->delete();
-        } else {
+        } elseif (is_string($keywords)) {
             $this->keywords()->where('keyword', $keywords)->delete();
+        } else {
+            $this->keywords()->delete();
         }
     }
 
