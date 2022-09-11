@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RrKhatri\\Keywordable": "src/"
+            "RrKhatri\\Keywordable\\": "src/"
         }
     },
     "extra": {
