@@ -24,30 +24,48 @@ trait Keywordable
 
     public function scopeHavingKeywords($query, ...$keywords)
     {
+        $keywords = $this->getKeywords($keywords);
+
         return $query->whereHas('keywords', function ($q) use ($keywords) {
-            $q->where('keyword', 'like', $keywords);
+            $q->where('keyword', 'regexp', $keywords);
         });
     }
 
     public function scopeOrHavingKeywords($query, ...$keywords)
     {
+        $keywords = $this->getKeywords($keywords);
+
         return $query->orWhereHas('keywords', function ($q) use ($keywords) {
-            $q->where('keyword', 'like', $keywords);
+            $q->where('keyword', 'regexp', $keywords);
         });
     }
 
     public function scopeHavingStrictKeywords($query, ...$keywords)
     {
-        return $query->whereHas('keywords', function ($q) use ($keywords) {
-            $q->where('keyword', $keywords);
-        });
+        $keywords = $this->getKeywords($keywords);
+
+        foreach ($keywords as $keyword) {
+            $query->whereHas('keywords', function ($q) use ($keyword) {
+                $q->where('keyword', $keyword);
+            });
+        }
+
+        return $query;
     }
 
     public function scopeOrHavingStrictKeywords($query, ...$keywords)
     {
-        return $query->orWhereHas('keywords', function ($q) use ($keywords) {
-            $q->where('keyword', $keywords);
+        $keywords = $this->getKeywords($keywords);
+
+        $query->orWhere(function ($query) use ($keywords) {
+            foreach ($keywords as $keyword) {
+                $query->whereHas('keywords', function ($q) use ($keyword) {
+                    $q->where('keyword', $keyword);
+                });
+            }
         });
+
+        return $query;
     }
 
     /**
@@ -55,9 +73,7 @@ trait Keywordable
      */
     public function syncKeywords(...$keywords)
     {
-        if (is_array($keywords) && count($keywords) == 1) {
-            $keywords = $keywords[0];
-        }
+        $keywords = $this->getKeywords($keywords);
 
         if (is_string($keywords) && $keywords = trim($keywords)) {
             $keywords = explode(',', $keywords);
@@ -88,5 +104,14 @@ trait Keywordable
 
             $this->keywords()->insert($keywordsToBeCreated);
         }
+    }
+
+    public function getKeywords($keywords)
+    {
+        if (is_array($keywords) && count($keywords) == 1) {
+            $keywords = $keywords[0];
+        }
+
+        return $keywords;
     }
 }
