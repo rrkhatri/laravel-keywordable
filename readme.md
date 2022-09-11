@@ -15,7 +15,7 @@ Migrate keywords table
 - `Keywordable` trait should be added on model.
 - To sync keywords on model.
  ```php
- $model->syncKeywords("laravel", "coder"); // ["laravel", "code"] -> both will work.
+ $model->syncKeywords("laravel", "coder"); // ["laravel", "coder"] -> both will work.
  ```
 - Search models having matching keywords.
 ```php
