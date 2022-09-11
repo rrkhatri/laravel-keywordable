@@ -1,6 +1,8 @@
 <?php
 
-namespace RrKhatri\Keywordable;
+namespace RrKhatri\Keywordable\Traits;
+
+use RrKhatri\Keywordable\Models\Keyword;
 
 trait Keywordable
 {
