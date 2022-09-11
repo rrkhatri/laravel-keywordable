@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RrKhatri\\Keywordable\\": "app/Traits"
+            "RrKhatri\\LaravelKeywordable\\App\\Traits": "app/Traits"
         }
     },
     "extra": {
