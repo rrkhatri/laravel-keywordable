@@ -13,7 +13,7 @@ Migrate keywords table
 
 ### Usage:
 - `Keywordable` trait should be added on model.
-- To sync keywords on model.
+- Sync keywords on model.
  ```php
  $model->syncKeywords("laravel", "coder"); // ["laravel", "coder"] -> both will work.
  ```
@@ -25,7 +25,7 @@ $query->havingKeywords("lara", "co"); // orHavingKeywords -> to apply filter as 
 ```php
 $query->havingExactKeywords("laravel", "coder"); // orHavingExactKeywords -> to apply filter as OR.
 ```
-- To remove keywords from model.
+- Remove keywords from model.
 ```php
 $model->removeKeywords(); // will remove all keywords.
 $model->removeKeywords("laravel"); // will remove specified keyword(s).
