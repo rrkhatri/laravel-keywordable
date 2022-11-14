@@ -1,9 +1,8 @@
-## Laravel Keywordable
+# Laravel Keywordable
 This package is used to bind searchable keywords on model. Which you can directly use in your query.
 
-<hr/>
 
-### Setup:
+## Setup:
 
 Publish model & trait by executing below command.
 >php artisan vendor:publish --provider="RrKhatri\Keywordable\KeywordServiceProvider"
@@ -11,7 +10,7 @@ Publish model & trait by executing below command.
 Migrate keywords table
 >php artisan migrate
 
-### Usage:
+## Usage:
 - `Keywordable` trait should be added on model.
 - Sync keywords on model.
  ```php
@@ -30,8 +29,6 @@ $query->havingExactKeywords("laravel", "coder"); // orHavingExactKeywords -> to 
 $model->removeKeywords(); // will remove all keywords.
 $model->removeKeywords("laravel"); // will remove specified keyword(s).
 ```
-
-<hr/>
 
 ## Licence            
 This package is [Treeware](https://treeware.earth). If you use it in production, then we ask that you [**buy the world a tree**](https://plant.treeware.earth/rrkhatri/laravel-keywordable) to thank us for our work. By contributing to the Treeware forest you’ll be creating employment for local families and restoring wildlife habitats.
